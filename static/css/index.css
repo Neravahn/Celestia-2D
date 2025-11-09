@@ -1,0 +1,113 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background: black;
+    overflow: hidden;
+    font-family: 'poppins', sans-serif;
+    color: white;
+}
+
+
+#starfield-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+
+.content {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    font-family: 'Asimovian';
+    letter-spacing:6px;
+
+}
+
+
+button {
+    margin-top: 9px;
+    padding: 12px 35px;
+    font-size: 1rem;
+    background: white;
+    border: none;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    align-items: center;
+    border-radius: 12px;
+}
+
+
+button:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+hi {
+     background: linear-gradient(90deg, #FFD700, #FF8C00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h5{
+    letter-spacing: 2px;
+    margin-right: 310px;
+
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: transparent;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 2;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.footer img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    filter: brightness(0) invert(1); 
+ 
+}
+

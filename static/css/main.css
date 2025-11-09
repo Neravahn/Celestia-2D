@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    background: black;
+}
+
+#spaceCanvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#hamburger {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#element_panel {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: rgba(20,20,20,0.9);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.hidden {
+    transform: translateX(-150%);
+}

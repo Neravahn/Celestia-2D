@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CELESTIA 2D</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+
+    <style>
+        @font-face {
+            font-family: 'Asimovian';
+            src: url("{{ url_for('static', filename='fonts/Asimovian-Regular.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+
+</head>
+
+<body>
+    <canvas id="starfield-main"></canvas>
+    <div class="content">
+        <h5>WELCOME TO-</h5>
+        <h1>CELESTIA <hi>2D</hi>
+        </h1>
+
+        <a href="{{ url_for('main') }}">
+            <button id="enter-btn">LAUNCH</button>
+        </a>
+    </div>
+
+
+    <!--SCRIPTS-->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <footer>
+        <div class="footer">
+
+            <a href="https://github/Neravahn" target="_blank">
+                <img src="{{ url_for('static', filename='images/icons8-github-50.png') }}">
+                <span>GITHUB</span>
+            </a>
+
+
+
+            <a href="https://neravahn.pythonanywhere.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/icons8-portfolio-50.png') }}">
+                <span>PORTFOLIO</span>
+            </a>
+
+        </div>
+    </footer>
+</body>
+
+</html>

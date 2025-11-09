@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <canvas id="space_canvas"></canvas>
+
+    <div id="hamburger">&#9776;</div>
+    <div id="element_panel" class="hidden">
+        <select id="element_selector">
+            <option value="planet">PLANET</option>
+            <option value="star">STAR</option>
+            <option value="blackhole">BLACKHOLE</option>
+        </select>
+
+        <label>
+            <input type ='checkbox' id="auto_orbit">
+            AUTO ORBIT
+        </label>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/hamburger.js') }}"></script>
+</body>
+</html>
