@@ -18,7 +18,7 @@ resizeCanvas();
 //NOW CREATING STARS ( RANDOM )
 function initStars_index() {
     stars = [];
-    for (let i = 0; i<numStars; i++) {
+    for (let i = 0; i < numStars; i++) {
         stars.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
@@ -36,21 +36,26 @@ initStars_index();
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (let s of stars){
+    for (let i = 0; i < star.length; i++) {
+        s = star[i]
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.radius, 0, 2*Math.PI);
+        ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
         ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
         ctx.fill();
 
         //ADDING TWINKLE EFFECT
         s.alpha += s.twinkleSpeed;
-        if (s.alpha >= 1 || s.alpha <= 0.2) s.twinkleSpeed *= -1
-
+        if (s.alpha >= 1 || s.alpha <= 0.2) {
+            s.twinkleSpeed *= -1
+        }
         //ADDING DRIFTING EFFECT
         s.y += s.speed;
-        if (s.y > canvas.height) s.y = 0;
-}
-requestAnimationFrame(animateStars);
+        if (s.y > canvas.height) {
+            s.y = 0;
+        }
+    }
+
+    requestAnimationFrame(animateStars);
 }
 animateStars();
 
