@@ -1,17 +1,20 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     height: 100%;
     background: black;
+    font-family: Arial, sans-serif;
+    color: white;
 }
 
-#spaceCanvas {
+#space_canvas {
     display: block;
     width: 100vw;
     height: 100vh;
+    background: transparent;
 }
-
 
 #hamburger {
     position: absolute;
@@ -21,20 +24,87 @@ html, body {
     color: white;
     cursor: pointer;
     z-index: 10;
+    user-select: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#hamburger:hover {
+    transform: scale(1.2);
 }
 
 #element_panel {
     position: absolute;
     top: 50px;
     left: 10px;
-    background: rgba(20,20,20,0.9);
-    padding: 10px;
-    border-radius: 8px;
+    background-color: rgba(30, 29, 29, 0.85); 
+    border: 1px solid white; 
+    border-radius: 8px; 
+    padding: 12px;
+    font-size: 13px;
     color: white;
-    z-index: 10;
-    transition: transform 0.3s ease;
+    z-index: 50; 
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 220px; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+#element_panel label {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px; 
+    color: #ffffff;
+    margin-top: 8px;
+    margin-bottom: 2px;
+}
+
+#element_panel input{
+    border: 1px solid #ffffff;      
+    background-color: rgba(39, 39, 39, 0.95); 
+    color: #ffffff;                
+    padding: 8px 10px;            
+    border-radius: 6px;             
+    font-size: 13px;              
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .hidden {
     transform: translateX(-150%);
+    opacity: 0;
+}
+
+
+#tooltip {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    color: white;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 220px;
+
+}
+
+#tooltip h5 {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    color: #ffcc00;
+}
+
+#tooltip div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#tooltip span {
+    font-weight: bold;
+    color: #ffffff;
 }

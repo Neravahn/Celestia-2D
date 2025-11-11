@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAIN</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
+
 <body>
     <canvas id="space_canvas"></canvas>
 
     <div id="hamburger">&#9776;</div>
     <div id="element_panel" class="hidden">
-        <select id="element_selector">
-            <option value="planet">PLANET</option>
-            <option value="star">STAR</option>
-            <option value="blackhole">BLACKHOLE</option>
-        </select>
-
-        <label>
-            <input type ='checkbox' id="auto_orbit">
-            AUTO ORBIT
+        <label>RADIUS
+            <input type="number" id="radius" placeholder="DEFAULT">
         </label>
+        <label>
+            MASS
+            <input type="mass" id="mass" placeholder="DEFAULT">
+        </label>
+        <label>
+            VELOCITY ON X AXIS
+            <input type="number" id="velocityx" placeholder="DEFAULT">
+        </label>
+        <label>
+            VELOCITY ON Y AXIS
+            <input type="number" id="velocityy" placeholder="DEFAULT">
+        </label>
+       
+
     </div>
+
+     <div id="tooltip">
+            <h5>TOOLTIP</h5>
+            <div id="type">TYPE:<span></span></div>
+            <div id="radius">RADIUS:<span></span></div>
+            <div id="v_radius">VISIBLE RADIUS:<span></span></div>
+            <div id="mass">MASS:<span></span></div>
+            <div id="velocityx">VELOCITY X AXIS:<span></span></div>
+            <div id="velocityy">VELOCITY Y AXIS:<span></span></div>
+        </div>
     <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hamburger.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/core/elem_hover.js') }}"></script>
 </body>
+
 </html>

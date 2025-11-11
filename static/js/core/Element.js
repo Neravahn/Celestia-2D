@@ -1,16 +1,15 @@
-import { star, blackhole } from './render.js';
+import { star, blackhole, neutron_star, planet } from './render.js';
 
 
 export class Element {
-    constructor(x, y, velocityx, velocityy, mass, radius, color, type) {
+    constructor(x, y, velocityx, velocityy, mass, radius, v_radius, type) { //ADDED VISUAL RADIUS SO THE LEMENTS CAN BE VISUAL WHILE MAINTAINING THE RAL PHYYSICS
         this.x = x;
         this.y = y;
         this.velocityx = velocityx;
         this.velocityy = velocityy;
         this.mass = mass;
         this.radius = radius;
-        this.color = color;
-        // this.fixed = this.fixed;
+        this.v_radius = v_radius;
         this.type = type;
 
 
@@ -30,7 +29,7 @@ export class Element {
             const point_2 = this.trail[i+1];
             const alpha = i / this.trail.length;
             ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-            ctx.lineWidth = this.radius /2;
+            ctx.lineWidth = 2;
             ctx.moveTo( point_1.x , point_1.y);
             ctx.lineTo( point_2.x, point_2.y);
             
@@ -41,17 +40,17 @@ export class Element {
 
         //DRAW ELEMENTS
         if (this.type === 'blackhole') {
-            blackhole(ctx, this.x, this.y, this.radius);
+            blackhole(ctx, this.x, this.y, this.v_radius);
         }
 
         else if (this.type === 'star') {
-            star(ctx, this.x, this.y, this.radius);
+            star(ctx, this.x, this.y, this.v_radius);
         }
-        else {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-            ctx.fillStyle = this.color;
-            ctx.fill();
+        else if(this.type === 'planet') {
+            planet(ctx, this.x, this.y, this.v_radius);
+        }
+        else if (this.type === 'neutron_star') {
+            neutron_star(ctx, this.x, this.y, this.v_radius);
         }
     }
 

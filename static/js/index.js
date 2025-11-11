@@ -36,8 +36,8 @@ initStars_index();
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (let i = 0; i < star.length; i++) {
-        s = star[i]
+    for (let i = 0; i < stars.length; i++) {
+        s = stars[i]
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
         ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;

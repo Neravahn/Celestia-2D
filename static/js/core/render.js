@@ -31,19 +31,55 @@ export function blackhole(ctx, x, y, radius) {
 
 }
 
-
-//MAKING STAR DESGIN
 export function star(ctx, x, y, radius) {
     ctx.save();
-
-    ctx.shadowBlur = radius * 1;// INTENSITY OF THE GLOW.. WILL REDUCE IF ITD MORE
-    ctx.shadowColor = '#ffd700';
-
+    for (let i = 3; i > 0; i--) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius * (1 + i * 0.3), 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(255, 215, 0, ${0.2 / i})`;
+        ctx.shadowBlur = radius * i * 2;
+        ctx.shadowColor = '#ffd700';
+        ctx.fill()
+    }
 
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fillStyle = '#ffd700';
     ctx.fill();
+    ctx.restore();
+}
 
+
+export function planet(ctx, x, y, radius){
+    const gradient = ctx.createRadialGradient(x, y, radius * 0.3, x, y, radius);
+    gradient.addColorStop(0, '#4da6ff');
+    gradient.addColorStop(0.6, '#0059b3');
+    gradient.addColorStop(1, 'transparent');
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2*Math.PI);
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius*0.9, 0, 2*Math.PI);
+    ctx.strokeStyle = `rgba(255,255,255,0.15)`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+}
+
+export function neutron_star (ctx, x, y, radius) {
+    ctx.save();
+    for (let i = 3; i>0 ; i--) {
+        ctx.beginPath();
+        ctx.arc(x, y, radius * (1 + i * 0.25), 0, 2*Math.PI);
+        ctx.fillStyle = `rgba(173, 216, 255, ${0.25 / i})`;
+        ctx.shadowBlur = radius * i * 3;
+        ctx.shadowColor = '#99ccff';
+        ctx.fill();
+    }
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2*Math.PI);
+    ctx.fill();
     ctx.restore();
 }
