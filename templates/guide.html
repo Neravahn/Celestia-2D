@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOCUMENTATION - CELESTIA 2D</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/guide.css') }}">
+</head>
+
+<body>
+    <h1>Celestia 2D - DOCUMENTATION</h1>
+    <p>
+    <h3>Overview</h3>
+    Celestia 2D is a simulation of celestial objects including planets, stars, neutron stars
+    and black holes. Users can create objects with specific mass, radius, and velocity, and the simulation
+    will automatically classify them based on the density and size.
+
+    <h5>Key Features</h5>
+    <li>Gravtiy based interactions (scaled at 5e-4 G )</li>
+    <li>Collision and orbital motion</li>
+    <li>Dynamic visual effects ( glow, ring, rotation )</li>
+    </p>
+
+
+    <p>
+    <h3>How to Spawn Objects</h3>
+    <Ol>
+        <li>Click on the canvas to place the objects at the cursor location</li>
+        <li>Input fields ( all optional, defaults used if blank )</li>
+        <li>The simulation will automatically calculates density and assigns an object type</li>
+    </Ol>
+    </p>
+    <h3>Celestia Quick Reference Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Density Range</th>
+                <th>Suggested Radius</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr>
+                <td>Planet</td>
+                <td>0.2 – 5</td>
+                <td>10–30</td>
+                <td>Default planet</td>
+            </tr>
+            <tr>
+                <td>Giant Planet</td>
+                <td>0.2 – 5</td>
+                <td>35+</td>
+                <td>Rings, visually large</td>
+            </tr>
+            <tr>
+                <td>Star</td>
+                <td>5 – 20</td>
+                <td>8–20</td>
+                <td>Glowing</td>
+            </tr>
+            <tr>
+                <td>Neutron Star</td>
+                <td>20 – 50</td>
+                <td>5–10</td>
+                <td>Very dense</td>
+            </tr>
+            <tr>
+                <td>Black Hole</td>
+                <td>50+</td>
+                <td>5–15</td>
+                <td>Rotates, strong gravity</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <h3>Tips for Users</h3>
+        <li>Larger radius with same mass => lower density => may as classify as planets instead of star</li>
+        <li>High velocities can allow objects to escape gravity of nearby objects</li>
+        <li>Rrecommended rages
+            <li>Mass: 100 - 100000000</li>
+            <li>Radius: 5 - 50</li>
+        </li>
+        <li>Experiment with the combinations to see interactions like collision, orbititng or clustering</li>
+    </p>
+
+    <p>
+        <h3>Visual Effects</h3>
+        <li>Black Holes: Rotating, glowing gradient, optional accretion disk</li>
+        <li>Stars & Neutron Stars: Glowing halo and layered gradients</li>
+        <li>Giant Planets: Rings, large radius</li>
+        <li>Planets: Subtle radial gradients and outlines</li>
+    </p>
+    <p>
+        <h3>Final Notes</h3>
+        <li>All units are simulation units, not real-world units</li>
+        <li>You can tweak density thresholds, color, and visual effects to custimise your univers</li>
+        <li>Encourage experimentation - Thats the fun part of Celestia 2D</li>
+    </p>
+</body>
+
+</html>

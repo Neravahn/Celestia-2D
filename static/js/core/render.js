@@ -83,3 +83,27 @@ export function neutron_star (ctx, x, y, radius) {
     ctx.fill();
     ctx.restore();
 }
+
+export function giant_planet(ctx,x, y, radius) {
+    const gradient = ctx.createRadialGradient(x, y, radius * 0.3, x, y, radius);
+    gradient.addColorStop(0, '#ffcc66');
+    gradient.addColorStop(0.6, '#cc9933');
+    gradient.addColorStop(1, 'transparent');
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 *Math.PI);
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.ellipse(x, y, radius * 1.3, radius * 0.2, Math.PI / 6, 0, 2 * Math.PI);
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius * 1.05, 0, 2 * Math.PI);
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+}

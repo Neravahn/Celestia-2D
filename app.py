@@ -11,6 +11,9 @@ def index():
 def main():
     return render_template('main.html')
 
+@app.route('/guide', methods= ['GET'])
+def guide():
+    return render_template('guide.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

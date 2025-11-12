@@ -27,8 +27,12 @@ export function setupUI(objects, canvas, velocityxInput, velocityyInput, massInp
         
 
 
-        if (density >= 0.2 && density < 5) {
-            type = 'planet';
+        if (density >= 0 && density < 5) {
+            if ( radius >= 50) {
+                type = 'giant_planet';
+            } else {
+                type = 'planet';
+            }
         }
         else if (density >= 5 && density < 20) {
             type = 'star';

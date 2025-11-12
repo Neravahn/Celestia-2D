@@ -1,4 +1,4 @@
-import { star, blackhole, neutron_star, planet } from './render.js';
+import { star, blackhole, neutron_star, planet, giant_planet } from './render.js';
 
 
 export class Element {
@@ -51,6 +51,9 @@ export class Element {
         }
         else if (this.type === 'neutron_star') {
             neutron_star(ctx, this.x, this.y, this.v_radius);
+        }
+        else if (this.type === 'giant_planet') {
+            giant_planet(ctx, this.x, this.y, this.v_radius);
         }
     }
 
