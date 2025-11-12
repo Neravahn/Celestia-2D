@@ -22,13 +22,14 @@
 <body>
     <canvas id="starfield-main"></canvas>
     <div class="content">
-        <h5>WELCOME TO-</h5>
-        <h1>CELESTIA <hi>2D</hi>
+        <h5 class="title">WELCOME TO-</h5>
+        <h1 class="title">CELESTIA <hi>2D</hi>
         </h1>
-
-        <a href="{{ url_for('main') }}">
-            <button id="enter-btn">LAUNCH</button>
-        </a>
+        <div class="title">
+            <a href="{{ url_for('main') }}">
+                <button id="enter-btn">LAUNCH</button>
+            </a>
+        </div>
     </div>
 
 
@@ -37,7 +38,7 @@
     <footer>
         <div class="footer">
 
-            <a href="https://github/Neravahn" target="_blank">
+            <a href="https://github.com/Neravahn/Celestia-2D" target="_blank">
                 <img src="{{ url_for('static', filename='images/icons8-github-50.png') }}">
                 <span>GITHUB</span>
             </a>

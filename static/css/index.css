@@ -39,7 +39,7 @@ body {
 
 h1 {
     font-size: 4rem;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-family: 'Asimovian';
     letter-spacing:6px;
 
@@ -109,5 +109,19 @@ footer {
     margin-right: 8px;
     filter: brightness(0) invert(1); 
  
+}
+h4 {
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+
+    
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.title {
+  animation: float 4s ease-in-out infinite;
 }
 
