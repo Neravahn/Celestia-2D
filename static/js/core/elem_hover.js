@@ -26,7 +26,7 @@ export function get_objects(objects) {
 
         const distancex = obj.x - world_mousex;
         const distancey = obj.y - world_mousey;
-        const distance = Math.sqrt(distancex * distancey + distancey * distancey);
+        const distance = Math.sqrt(distancex * distancex + distancey * distancey);
 
 
         if (distance < obj.radius && distance < min_distance) {
@@ -38,17 +38,22 @@ export function get_objects(objects) {
 }
 
 export function tooltip(hovered_obj) {
-    if (!hovered_obj) {
-        tootltipdiv.style.display = 'none';
-        return;
-    }
 
     tootltipdiv.style.display = 'block';
 
-    tootltipdiv.querySelector('#type span').textContent = hovered_obj.type;
-    tootltipdiv.querySelector('#radius span').textContent = hovered_obj.radius.toFixed(2);
-    tootltipdiv.querySelector('#v_radius').textContent = hovered_obj.v_radius.toFixed(2);
-    tootltipdiv.querySelector('#mass span').textContent = hovered_obj.mass.toFixed(2);
-    tootltipdiv.querySelector('#velocityx span').textContent = hovered_obj.velocityx.toFixed(3);
-    tootltipdiv.querySelector('#velocityy span').textContent = hovered_obj.velocityy.toFixed(3);
+    if(hovered_obj){
+        tootltipdiv.querySelector('#type span').textContent = hovered_obj.type;
+        tootltipdiv.querySelector('#radius span').textContent = hovered_obj.radius.toFixed(2);
+        tootltipdiv.querySelector('#v_radius span').textContent = hovered_obj.v_radius.toFixed(2);
+        tootltipdiv.querySelector('#mass span').textContent = hovered_obj.mass.toFixed(2);
+        tootltipdiv.querySelector('#velocityx span').textContent = hovered_obj.velocityx.toFixed(3);
+        tootltipdiv.querySelector('#velocityy span').textContent = hovered_obj.velocityy.toFixed(3);
+    } else {
+        tootltipdiv.querySelector('#type span').textContent = '-';
+        tootltipdiv.querySelector('#radius span').textContent = '-';
+        tootltipdiv.querySelector('#v_radius span').textContent ='-' ;
+        tootltipdiv.querySelector('#mass span').textContent = '-';
+        tootltipdiv.querySelector('#velocityx span').textContent ='-';
+        tootltipdiv.querySelector('#velocityy span').textContent = '-';
+    }
 }
