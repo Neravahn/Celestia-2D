@@ -1,11 +1,9 @@
 //MAKING BLACKHOLE DESGIN
 let rotation = 0; //WILL GIVE IT MORE BLACKHOLISH LOOK
 export function blackhole(ctx, x, y, radius) {
-    rotation += 0.03; //ROTATION SPEEED
 
     ctx.save();
     ctx.translate(x, y);
-    ctx.rotate(rotation);
     ctx.translate(-x, -y);
 
 

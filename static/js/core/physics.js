@@ -78,8 +78,13 @@ export function physicslogic(objects, timesteps) {
                 const v_radius = new_radius * 3;
                 let type;
 
-                if (new_density >= 0.2 && new_density < 5) {
-                    type = 'planet';
+
+                if (density >= 0 && density < 5) {
+                    if (new_radius >= 50) {
+                        type = 'giant_planet';
+                    } else {
+                        type = 'planet';
+                    }
                 }
                 else if (new_density >= 5 && new_density < 20) {
                     type = 'star';

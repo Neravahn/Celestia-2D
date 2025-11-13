@@ -3,7 +3,7 @@ import { physicslogic } from './core/physics.js';
 import { applyzoom, restorezoom, enable_zoomandpan, offsetx, offsety, zoom } from './core/canvas.js';
 import { initStars, drawStars} from './core/stars.js';
 import { setupUI } from './core/ui.js';
-import { track_mouse, get_objects, tootltip } from './core/elem_hover.js';
+import { track_mouse, get_objects, tooltip } from './core/elem_hover.js';
 import { download_simulation, load_simulation } from './core/celestia_io.js';
 
 
@@ -41,9 +41,6 @@ time_slider.addEventListener('input', () => {
 
 //GLOBALS
 const objects = [];
-const canvasclick = { value: 'planet' };
-const auto_orbitOn = { value: false };
-
 
 
 //INITIALIZING EVERYTHING
@@ -77,7 +74,7 @@ function animate() {
         obj.draw(ctx);
     }
     const hovered_obj = get_objects(objects);
-    tootltip(hovered_obj)
+    tooltip(hovered_obj)
 
 
     restorezoom(ctx);
