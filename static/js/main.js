@@ -57,9 +57,10 @@ function animate() {
     physicslogic(objects, timesteps);
 
     //TRAIL LOOP
+    const currentTime = performance.now()
     for (let i = 0; i < objects.length; i++) {
         let obj = objects[i];
-        obj.trail_method();
+        obj.trail_method(objects, currentTime);
     }
 
     applyzoom(ctx, canvas);

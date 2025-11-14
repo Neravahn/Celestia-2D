@@ -11,10 +11,11 @@ export class Element {
         this.radius = radius;
         this.v_radius = v_radius;
         this.type = type;
+        this.lastTrailTime = 0;
 
 
         //TRAIL ONLY FOR PLANETS
-        if( type !== 'star' && type !== 'blackhole'){
+        if (type !== 'star' && type !== 'blackhole') {
             this.trail = []; //STORES PAST POSITION IN WHICH THE TRAIL WILL BE DRAWN
             this.max_trail = 500; //DECIDES THE LENGTH OF THE TRAIL WILL KEEP IT 40 POINTS
         }
@@ -22,21 +23,21 @@ export class Element {
     }
 
     draw(ctx) {
-       if (this.trail) {
-        ctx.beginPath();
-        for (let i = 1; i < this.trail.length - 1; i++){
-            const point_1 = this.trail[i];
-            const point_2 = this.trail[i+1];
-            const alpha = i / this.trail.length;
-            ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-            ctx.lineWidth = 2;
-            ctx.moveTo( point_1.x , point_1.y);
-            ctx.lineTo( point_2.x, point_2.y);
-            
-       }
-       ctx.stroke();
-    }
 
+
+        if( this.trail){
+            ctx.beginPath();
+            for( let i = 1; i < this.trail.length; i++) {
+                const p1 = this.trail[i -1];
+                const p2 = this.trail[i];
+                const alpha = i / this.trail.length;
+                ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+                ctx.lineWidth = 2;
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+            }
+            ctx.stroke();
+        }
 
         //DRAW ELEMENTS
         if (this.type === 'blackhole') {
@@ -46,7 +47,7 @@ export class Element {
         else if (this.type === 'star') {
             star(ctx, this.x, this.y, this.v_radius);
         }
-        else if(this.type === 'planet') {
+        else if (this.type === 'planet') {
             planet(ctx, this.x, this.y, this.v_radius);
         }
         else if (this.type === 'neutron_star') {
@@ -57,10 +58,87 @@ export class Element {
         }
     }
 
-    trail_method() {
-        if(this.trail) {
+    istable_orbit(objects) {
+        let center = null;
+        let min_dist = Infinity;
+
+        for (let i = 0; i < objects.length; i++) {
+            const obj = objects[i];
+
+            if (obj.type === 'star' || obj.type === 'blackhole' || obj.type === 'neutron_star') {
+                const distancex = this.x - obj.x;
+                const distancey = this.y - obj.y;
+                const dist = Math.sqrt(distancex * distancex + distancey * distancey);
+
+                if (dist < min_dist) {
+                    min_dist = dist;
+                    center = obj;
+                }
+            }
+        }
+
+        if (!center) {
+            return false;
+        }
+
+        //CIRCULAR ORBITAL SPEED
+        const G = 5e-4;
+        const v_expected = Math.sqrt((G * center.mass) / min_dist);
+
+        //ACTUAL VLEOCITY
+        const v_actual = Math.sqrt(this.velocityx ** 2 + this.velocityy ** 2);
+
+
+        //APPLYING ONLY 10% TOLERACE
+        return Math.abs(v_actual - v_expected) / v_expected < 0.10;
+    }
+
+    updatetrailLength(dist) {
+        const base = 60;
+        const scale = Math.min(dist / 5, 2000);
+        this.max_trail= Math.floor(base + scale);
+    }
+
+    trail_method(objects, currentTime) {
+        if (!this.trail) {
+            return;
+        }
+
+        if (!currentTime) {
+            currentTime = performance.now();
+        }
+
+        const trail_time = 1000;
+        if (currentTime - this.lastTrailTime < trail_time){
+            return;
+        }
+
+        this.lastTrailTime = currentTime;
+
+        let min_dist  = Infinity;
+
+        for (let i = 0; i < objects.length; i++){
+            const obj= objects[i];
+
+            if ( obj.type === 'star' || obj.type === 'blackhole' || obj.type === 'neutron_star'){
+                const distancex = this.x - obj.x;
+                const distancey = this.y - obj.y;
+                const dist = Math.sqrt(distancex * distancex + distancey * distancey);
+                if (dist< min_dist) {
+                    min_dist = dist;
+                }
+            }
+        }
+
+        this.updatetrailLength(min_dist);
+
+
+        //ONLY DRAW TAIL WHEN ORBIT IS STABLE
+        if ( this.istable_orbit(objects)){
             this.trail.push({x: this.x, y: this.y});
-            if (this.trail.length > this.max_trail) this.trail.shift();
+            if ( this.trail.length > this.max_trail) {
+                this.trail.shift();
+            }
         }
     }
 }
