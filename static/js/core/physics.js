@@ -79,7 +79,7 @@ export function physicslogic(objects, timesteps) {
                 let type;
 
 
-                if (density >= 0 && density < 5) {
+                if (new_density >= 0 && new_density < 5) {
                     if (new_radius >= 50) {
                         type = 'giant_planet';
                     } else {

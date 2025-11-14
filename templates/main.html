@@ -35,6 +35,9 @@
        <label for="timesteps"> TIMESTEPS:<span id="timesteps_value"></span>
         <input type="range" id="timesteps" min="-0" max="10" value="1">
        </label>
+       <label for="autoorbit">
+        <input type="checkbox" id="auto_orbit">
+       </label>
 
        
 
@@ -52,6 +55,7 @@
     <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hamburger.js') }}"></script>
     <script type="module" src="{{ url_for('static', filename='js/core/elem_hover.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/core/ui.js') }}"></script>
 </body>
 
 </html>

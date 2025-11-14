@@ -47,6 +47,36 @@ export function setupUI(objects, canvas, velocityxInput, velocityyInput, massInp
         let new_object = new Element(x, y, velocityx, velocityy, mass, radius, v_radius, type);
         console.log('Mass:', mass, 'Radius:', radius, 'Density:', density, 'Type:', type);
 
+
+        //AUTO ORBIT LOGIC 
+        const auto_orbit = document.getElementById('auto_orbit');
+        if (auto_orbit.checked && objects.length > 0){
+            let nearest = null;
+            let min_dist = Infinity;
+
+
+            for(let i =0; i < objects.length; i++){
+                let obj = objects[i];
+                let distancex = new_object.x - obj.x;
+                let distancey= new_object.y - obj.y;
+                let distance = Math.sqrt(distancex * distancex + distancey*distancey);
+                if (distance< min_dist){
+                    min_dist = distance;
+                    nearest = obj;
+                }
+            }
+
+            if(nearest){
+                const G = 5e-4;
+                const distancex= new_object.x - nearest.x;
+                const distancey = new_object.y - nearest.y;
+                const r = Math.sqrt(distancex* distancex + distancey* distancey);
+                const speed = Math.sqrt(G* nearest.mass / r);
+
+                new_object.velocityx= - distancey/r * speed;
+                new_object.velocityy = distancex/r * speed;
+            }
+        }
         if (new_object) {
             objects.push(new_object);
         }
