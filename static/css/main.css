@@ -140,3 +140,7 @@ button:hover {
     align-items: center;
     height: 200%;
 }
+#auto_orbit {
+    transform: scale(0.7);
+    cursor: pointer;
+}
