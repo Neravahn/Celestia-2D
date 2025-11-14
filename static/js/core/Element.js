@@ -32,7 +32,7 @@ export class Element {
                 const p2 = this.trail[i];
                 const alpha = i / this.trail.length;
                 ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-                ctx.lineWidth = 2;
+                ctx.lineWidth = 12;
                 ctx.moveTo(p1.x, p1.y);
                 ctx.lineTo(p2.x, p2.y);
             }
@@ -94,9 +94,9 @@ export class Element {
     }
 
     updatetrailLength(dist) {
-        const base = 60;
-        const scale = Math.min(dist / 5, 2000);
-        this.max_trail= Math.floor(base + scale);
+        const base = 200;
+        const scale = dist * 0.5;
+        this.max_trail= Math.floor(base + scale, 5000);
     }
 
     trail_method(objects, currentTime) {
@@ -104,11 +104,8 @@ export class Element {
             return;
         }
 
-        if (!currentTime) {
-            currentTime = performance.now();
-        }
-
-        const trail_time = 1000;
+    
+        const trail_time = 1;
         if (currentTime - this.lastTrailTime < trail_time){
             return;
         }

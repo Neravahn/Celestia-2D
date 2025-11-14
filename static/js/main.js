@@ -52,15 +52,14 @@ track_mouse(canvas);
 
 
 //ANIMATIONA LOOP
-function animate() {
+function animate(time) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     physicslogic(objects, timesteps);
 
-    //TRAIL LOOP
-    const currentTime = performance.now()
+    //TRAIL LOO
     for (let i = 0; i < objects.length; i++) {
         let obj = objects[i];
-        obj.trail_method(objects, currentTime);
+        obj.trail_method(objects, time);
     }
 
     applyzoom(ctx, canvas);
