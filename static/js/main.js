@@ -79,8 +79,65 @@ function animate(time) {
 
     restorezoom(ctx);
 
+    //DRAWS POINTER FOR OFF SCREEN OBJ
+    for (let i = 0; i < objects.length; i++){
+        const obj = objects[i];
+        const { screenx, screeny} = worldtoscreen(obj.x , obj.y);
+
+        if ( isoffscreen ( screenx, screeny)) {
+            drawPointer(ctx, obj, canvas);
+        }
+    }
+
     requestAnimationFrame(animate);
 }
 animate();
 
+//FOR OFF SCREEN ELEMENTS
+function worldtoscreen(x, y){
+    return {
+        screenx: x * zoom + offsetx,
+        screeny: y * zoom + offsety
+    };
+}
 
+//CHECKS IF THE OBJECT IS OUTSIDE THE VIEWPORT
+function isoffscreen(screenx, screeny){
+    return (
+    screenx < 0 ||
+    screenx> canvas.width ||
+    screeny < 0 ||
+    screeny > canvas.height
+    );
+}
+
+//DRAWS POINTER FOR OBJECTS OF SCREEEN
+function drawPointer(ctx, obj, canvas){
+    const { screenx, screeny} = worldtoscreen(obj.x, obj.y);
+
+    const centerx = canvas.width/2;
+    const centery = canvas.height/2;
+
+
+    const angle = Math.atan2(screeny -centery, screenx - centerx);
+
+    const edgex = centerx + Math.cos(angle) * ( canvas.width / 2 - 30);
+    const edgey = centery + Math.sin(angle) * (canvas.height/ 2 - 30);
+
+
+    ctx.save();
+    ctx.translate(edgex, edgey);
+    ctx.rotate(angle);
+
+    //TRIANGLE ARROW
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(-12, 6);
+    ctx.lineTo(-12, -6);
+    ctx.closePath();
+
+    ctx.fillStyle = "yellow";
+    ctx.fill();
+
+    ctx.restore();
+}

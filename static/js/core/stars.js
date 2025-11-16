@@ -1,5 +1,5 @@
 let starinchunks = {};
-const tile_size = 800; //INCREASEDN TILES IXE SO ITS NOIT LAGGY
+const tile_size = 5000; //INCREASEDN TILES IXE SO ITS NOIT LAGGY
 const star_tile =1; //MAN ITS SO LAGGY EVEN ON 1 STAR HELL NAH
 const buffer = 1;
 
