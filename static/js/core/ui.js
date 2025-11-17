@@ -25,9 +25,10 @@ export function setupUI(objects, canvas, velocityxInput, velocityyInput, massInp
         const density = mass / ((4 / 3) * Math.PI * radius * radius * radius);
         const v_radius = radius * 3;
 
-
-
-        if (density >= 0 && density < 5) {
+        if (mass === 1e-6|| radius < 5) {
+            type = "dust";
+        }
+        else if (density >= 0 && density < 5) {
             if (radius >= 50) {
                 type = 'giant_planet';
             } else {
@@ -58,7 +59,7 @@ export function setupUI(objects, canvas, velocityxInput, velocityyInput, massInp
             for (let i = 0; i < objects.length; i++) {
                 let obj = objects[i];
 
-                if(obj.type !=='star' && obj.type !== 'blackhole' && obj.type !== 'neutron_star'){
+                if (obj.type !== 'star' && obj.type !== 'blackhole' && obj.type !== 'neutron_star') {
                     continue;
                 }
                 let distancex = new_object.x - obj.x;

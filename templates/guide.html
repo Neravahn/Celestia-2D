@@ -1,104 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOCUMENTATION - CELESTIA 2D</title>
-     <link rel="stylesheet" href="{{ url_for('static', filename='css/guide.css') }}">
+<meta charset="UTF-8">
+<title>Celestia 2D – Object Creation Guide</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #ffffff;
+        color: #000000;
+        line-height: 1.7;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+    h3 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    p, li {
+        font-size: 22px;
+    }
+
+    .type-block {
+        border-left: 6px solid #000000;
+        padding: 20px;
+        margin: 25px 0;
+        background: #f5f5f5;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 18px;
+        opacity: 0.7;
+    }
+</style>
+
 </head>
-
 <body>
-    <h1>Celestia 2D - DOCUMENTATION</h1>
-    <p>
-    <h3>Overview</h3>
-    Celestia 2D is a simulation of celestial objects including planets, stars, neutron stars
-    and black holes. Users can create objects with specific mass, radius, and velocity, and the simulation
-    will automatically classify them based on the density and size.
 
-    <h5>Key Features</h5>
-    <li>Gravtiy based interactions (scaled at 5e-4 G )</li>
-    <li>Collision and orbital motion</li>
-    <li>Dynamic visual effects ( glow, ring, rotation )</li>
-    </p>
+<div class="container">
 
+    <h1>Celestia 2D – Object Creation Guide</h1>
 
     <p>
-    <h3>How to Spawn Objects</h3>
-    <Ol>
-        <li>Click on the canvas to place the objects at the cursor location</li>
-        <li>Input fields ( all optional, defaults used if blank )</li>
-        <li>The simulation will automatically calculates density and assigns an object type</li>
-    </Ol>
-    </p>
-    <h3>Celestia Quick Reference Table</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Density Range</th>
-                <th>Suggested Radius</th>
-                <th>Notes</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-            <tr>
-                <td>Planet</td>
-                <td>0.2 – 5</td>
-                <td>10–30</td>
-                <td>Default planet</td>
-            </tr>
-            <tr>
-                <td>Giant Planet</td>
-                <td>0.2 – 5</td>
-                <td>35+</td>
-                <td>Rings, visually large</td>
-            </tr>
-            <tr>
-                <td>Star</td>
-                <td>5 – 20</td>
-                <td>8–20</td>
-                <td>Glowing</td>
-            </tr>
-            <tr>
-                <td>Neutron Star</td>
-                <td>20 – 50</td>
-                <td>5–10</td>
-                <td>Very dense</td>
-            </tr>
-            <tr>
-                <td>Black Hole</td>
-                <td>50+</td>
-                <td>5–15</td>
-                <td>Rotates, strong gravity</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>
-        <h3>Tips for Users</h3>
-        <li>Larger radius with same mass => lower density => may as classify as planets instead of star</li>
-        <li>High velocities can allow objects to escape gravity of nearby objects</li>
-        <li>Rrecommended rages
-            <li>Mass: 100 - 100000000</li>
-            <li>Radius: 5 - 50</li>
-        </li>
-        <li>Experiment with the combinations to see interactions like collision, orbititng or clustering</li>
+        This page explains how objects behave in the simulation based on their 
+        mass, radius, and density. Use this guide to understand what each object type represents
+        and how it will interact once placed into the universe.
     </p>
 
-    <p>
-        <h3>Visual Effects</h3>
-        <li>Black Holes: Rotating, glowing gradient, optional accretion disk</li>
-        <li>Stars & Neutron Stars: Glowing halo and layered gradients</li>
-        <li>Giant Planets: Rings, large radius</li>
-        <li>Planets: Subtle radial gradients and outlines</li>
-    </p>
-    <p>
-        <h3>Final Notes</h3>
-        <li>All units are simulation units, not real-world units</li>
-        <li>You can tweak density thresholds, color, and visual effects to custimise your univers</li>
-        <li>Encourage experimentation - Thats the fun part of Celestia 2D</li>
-    </p>
+    <h2>How Objects Are Classified</h2>
+
+    <div class="type-block">
+        <h3>Dust</h3>
+        <p>
+            Appears when:
+            <br>• Mass = <b>1e-6</b>  
+            • OR radius is <b>less than 5</b>
+        </p>
+        <p>
+            Dust behaves like tiny particles that get easily pulled by gravity.
+            Useful for forming accretion disks or dust clouds.
+        </p>
+    </div>
+
+    <div class="type-block">
+        <h3>Planet</h3>
+        <p>Density between <b>0 and 5</b>.</p>
+        <p>
+            Regular planets with stable gravitational interactions. 
+            They orbit larger bodies and work well for solar system setups.
+        </p>
+    </div>
+
+    <div class="type-block">
+        <h3>Giant Planet</h3>
+        <p>
+            Density between <b>0 and 5</b> AND radius <b>≥ 50</b>.
+        </p>
+        <p>
+            Very massive planets. They pull in smaller objects strongly and
+            can dominate orbital systems.
+        </p>
+    </div>
+
+    <div class="type-block">
+        <h3>Star</h3>
+        <p>Density between <b>5 and 20</b>.</p>
+        <p>
+            Strong gravitational pull. Stars are ideal for creating 
+            stable orbits or multiple-star systems.
+        </p>
+    </div>
+
+    <div class="type-block">
+        <h3>Neutron Star</h3>
+        <p>Density between <b>20 and 50</b>.</p>
+        <p>
+            Small but extremely dense. They attract objects very rapidly and 
+            can create chaotic movement if placed too close to others.
+        </p>
+    </div>
+
+    <div class="type-block">
+        <h3>Black Hole</h3>
+        <p>Density <b>50 or higher</b>.</p>
+        <p>
+            Very strong gravitational field. Objects spiral inward 
+            and merge if they get too close. Best used for accretion disks
+            or galaxy centers.
+        </p>
+    </div>
+
+    <h2>How Physics Works</h2>
+
+    <ul>
+        <li>Gravity pulls objects based on mass and distance.</li>
+        <li>Objects merge when they get close enough.</li>
+        <li>The new object keeps the total mass of both objects.</li>
+        <li>Radius is recalculated based on combined volume.</li>
+        <li>Momentum is preserved, so new objects continue moving smoothly.</li>
+        <li>Some collisions generate a shockwave animation.</li>
+        <li>Objects with the right speed form stable orbits.</li>
+    </ul>
+
+    <h2>Tips for Creating Interesting Systems</h2>
+
+    <ul>
+        <li>Use low density (0–5) for planets.</li>
+        <li>Use medium density (5–20) for stars.</li>
+        <li>Use very high density (50+) only for special cases (black holes).</li>
+        <li>Place dust around stars to form accretion disks.</li>
+        <li>Spread objects out to avoid instant merging.</li>
+        <li>Use different masses and radii for more dynamic movement.</li>
+    </ul>
+
+    <div class="footer">
+        This guide page was created with the help of AI.
+    </div>
+
+</div>
+
 </body>
-
 </html>

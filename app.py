@@ -11,7 +11,8 @@ def index():
 def main():
     return render_template('main.html')
 
-@app.route('/guide', methods= ['GET'])
+
+@app.route('/guide', methods = ['GET'])
 def guide():
     return render_template('guide.html')
 

@@ -1,4 +1,4 @@
-import { star, blackhole, neutron_star, planet, giant_planet } from './render.js';
+import { star, blackhole, neutron_star, planet, giant_planet, dust } from './render.js';
 
 
 export class Element {
@@ -53,6 +53,9 @@ export class Element {
         else if (this.type === 'neutron_star') {
             neutron_star(ctx, this.x, this.y, this.v_radius);
         }
+        else if(this.type === 'dust'){
+            dust(ctx, this.x, this.y, this.v_radius);
+        }
         else if (this.type === 'giant_planet') {
             giant_planet(ctx, this.x, this.y, this.v_radius);
         }
@@ -65,7 +68,7 @@ export class Element {
         for (let i = 0; i < objects.length; i++) {
             const obj = objects[i];
 
-            if (obj.type === 'star' || obj.type === 'blackhole' || obj.type === 'neutron_star') {
+            if (obj.type === 'star' || obj.type === 'blackhole' || obj.type === 'neutron_star' || obj.type === 'dust') {
                 const distancex = this.x - obj.x;
                 const distancey = this.y - obj.y;
                 const dist = Math.sqrt(distancex * distancex + distancey * distancey);
@@ -117,7 +120,7 @@ export class Element {
         for (let i = 0; i < objects.length; i++){
             const obj= objects[i];
 
-            if ( obj.type === 'star' || obj.type === 'blackhole' || obj.type === 'neutron_star'){
+            if ( obj.type === 'star' || obj.type === 'blackhole' || obj.type === 'neutron_star' || obj.type === 'dust'){
                 const distancex = this.x - obj.x;
                 const distancey = this.y - obj.y;
                 const dist = Math.sqrt(distancex * distancex + distancey * distancey);

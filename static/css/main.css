@@ -59,7 +59,7 @@ body {
     margin-bottom: 5px;
 }
 
-#element_panel input {
+#element_panel input, select {
     border: 1px solid #989898;
     background-color: rgba(39, 39, 39, 0.95);
     color: #ffffff;

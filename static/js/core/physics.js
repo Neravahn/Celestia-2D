@@ -60,7 +60,7 @@ export function physicslogic(objects, timesteps) {
 
 
             //SETTING MAIN HIERARCHY LOGIC
-            if (distance < critical_distance) {
+            if (distance < critical_distance && obj.type !== 'dust' && other.type !== 'dust') {
                 const total_mass = obj.mass + other.mass;
                 const new_x = (obj.x * obj.mass + other.x * other.mass) / total_mass //WEIGHTED AVERAGE OF POSITION OF BOTH THE ELEEMENTS
                 const new_y = (obj.y * obj.mass + other.y * other.mass) / total_mass // SAME ON Y AXIS
@@ -79,7 +79,7 @@ export function physicslogic(objects, timesteps) {
                 let type;
 
 
-                if (new_density >= 0 && new_density < 5) {
+                if (new_density > 1e-6 && new_density < 5) {
                     if (new_radius >= 50) {
                         type = 'giant_planet';
                     } else {

@@ -5,6 +5,7 @@ import { initStars, drawStars} from './core/stars.js';
 import { setupUI } from './core/ui.js';
 import { track_mouse, get_objects, tooltip } from './core/elem_hover.js';
 import { download_simulation, load_simulation } from './core/celestia_io.js';
+import { presets } from './core/presets.js';
 
 
 
@@ -19,6 +20,7 @@ const loadfile = document.getElementById('loadfile')
 const time_slider = document.getElementById('timesteps')
 let timesteps = parseFloat(time_slider.value) || 1;
 const timestepsSpan = document.getElementById('timesteps_value');
+const presetSelect = document.getElementById('load_presets')
 
 //SETTTING UP THE CANVAS
 const canvas = document.getElementById('space_canvas');
@@ -141,3 +143,16 @@ function drawPointer(ctx, obj, canvas){
 
     ctx.restore();
 }
+
+//PRESETS
+presetSelect.addEventListener('change', () => {
+    const selected = presetSelect.value;
+    console.log('Selected preset:', selected);
+    if (presets[selected]){
+        console.log('Applying preset...');
+        objects.length = 0;
+        objects.push(...presets[selected]());
+    } else {
+        console.warn('Preset not found!');
+    }
+});

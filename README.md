@@ -8,7 +8,7 @@ You can create stars, planets, neutron stars, giant planets, and even black hole
 Objects orbit, collide, form trails, and can be saved/loaded as full simulations.
 ## Features
 
-🪐 Celestial Bodies
+Celestial Bodies
 - Stars
 - Planets
 - Giant Planets
@@ -16,14 +16,14 @@ Objects orbit, collide, form trails, and can be saved/loaded as full simulations
 - Black Holes
  Custom radius, mass, and velocity for every object
 
-🌀 Physics
+Physics
 - Newtonian gravity
 - Stable orbit detection
 - Auto-Orbit mode
 - Trail rendering (distance-based)
 - Object collisions and merging
 
-📦 Simulation Tools
+Simulation Tools
 - Add elements with a UI panel
 - Toggle auto-orbit
 - Drag canvas for movement (if added)
@@ -31,11 +31,15 @@ Objects orbit, collide, form trails, and can be saved/loaded as full simulations
 - Save simulation → JSON
 - Load simulation → JSON
 
-💫 Visuals
+Visuals
 - Smooth canvas animations
 - Distance-based trail length
 - Dark, minimalistic UI
 - Tooltip showing live object stats
+
+Presets
+- A Binary star system with one planet
+- A black hole with accretion disk
 
 
 
@@ -48,5 +52,5 @@ Objects orbit, collide, form trails, and can be saved/loaded as full simulations
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ## Demo
 
-[DEMO](https://drive.google.com/file/d/1Rffb1cvXli2pDZKfw_3tifpYPqvpal3C/view?usp=sharing)
+[DEMO]()
 

@@ -13,6 +13,13 @@
 
     <div id="hamburger">&#9776;</div>
     <div id="element_panel" class="hidden">
+        <label for="load_presets">LOAD PRESETS
+            <select id="load_presets">
+                <option value="">SELECT PRESETS</option>
+                <option value="binaryStars">BINARY STAR SYSTEM</option>
+                <option value="accretionDisk">BLACKHOLE ACCRETION DISK</option>
+            </select>
+        </label>
         <label>RADIUS
             <input type="number" id="radius" placeholder="DEFAULT">
         </label>
@@ -30,28 +37,27 @@
         </label>
 
         <button id="save">DOWNLOAD SIMULATION</button>
-       <input type="file" id="loadfile" accept=".json">
+        <input type="file" id="loadfile" accept=".json">
 
-       <label for="timesteps"> TIMESTEPS:<span id="timesteps_value"></span>
-        <input type="range" id="timesteps" min="-0" max="100" value="1">
-       </label>
-       <label for="autoorbit"> AUTO ORBIT
-        <input type="checkbox" id="auto_orbit">
-       </label>
+        <label for="timesteps"> TIMESTEPS:<span id="timesteps_value"></span>
+            <input type="range" id="timesteps" min="0" max="50" value="1">
+        </label>
+        <label for="autoorbit"> AUTO ORBIT
+            <input type="checkbox" id="auto_orbit">
+        </label>
 
-       
-
+    
     </div>
 
-     <div id="tooltip">
-            <h5>TOOLTIP</h5>
-            <div id="type">TYPE:<span></span></div>
-            <div id="radius">RADIUS:<span></span></div>
-            <div id="v_radius">VISIBLE RADIUS:<span></span></div>
-            <div id="mass">MASS:<span></span></div>
-            <div id="velocityx">VELOCITY X AXIS:<span></span></div>
-            <div id="velocityy">VELOCITY Y AXIS:<span></span></div>
-        </div>
+    <div id="tooltip">
+        <h5>TOOLTIP</h5>
+        <div id="type">TYPE:<span></span></div>
+        <div id="radius">RADIUS:<span></span></div>
+        <div id="v_radius">VISIBLE RADIUS:<span></span></div>
+        <div id="mass">MASS:<span></span></div>
+        <div id="velocityx">VELOCITY X AXIS:<span></span></div>
+        <div id="velocityy">VELOCITY Y AXIS:<span></span></div>
+    </div>
     <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hamburger.js') }}"></script>
     <script type="module" src="{{ url_for('static', filename='js/core/elem_hover.js') }}"></script>

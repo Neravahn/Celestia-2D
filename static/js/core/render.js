@@ -105,3 +105,20 @@ export function giant_planet(ctx,x, y, radius) {
     ctx.lineWidth = 1;
     ctx.stroke();
 }
+
+
+export function dust(ctx, x, y, radius) {
+    ctx.save();
+
+    const gradient = ctx.createRadialGradient(x, y, radius * 0.1, x, y, radius);
+    gradient.addColorStop(0, "rgba(255,180,120,0.7)");
+    gradient.addColorStop(0.3, "rgba(255,140,90,0.35)");
+    gradient.addColorStop(1, "rgba(255,120,60,0)");
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    ctx.restore();
+}
